@@ -99,7 +99,7 @@ async def webhook(request: Request):
 
             filename = (
                 f"{group_id}_{event.message.id}_"
-                f"{datetime.now(timezone.utc).strftime(%Y%m%d%H%M%S)}.jpg"
+                f"{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}.jpg"
             )
             asset_id = await upload_asset(image_bytes, filename)
             await add_to_album(album_id, asset_id)
