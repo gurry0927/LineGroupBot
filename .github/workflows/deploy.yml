@@ -1,0 +1,14 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger NAS deploy
+        run: |
+          curl -f -X POST "${{ secrets.LINEBOT_DEPLOY_URL }}/deploy" \
+            -H "X-Deploy-Token: ${{ secrets.LINEBOT_DEPLOY_TOKEN }}"
