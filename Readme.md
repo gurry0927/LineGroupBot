@@ -44,7 +44,7 @@ https://your-domain.example.com/webhook
 | `LINE_CHANNEL_SECRET` | LINE channel secret |
 | `IMMICH_URL` | Your Immich instance URL (e.g. `https://immich.example.com`) |
 | `IMMICH_API_KEY` | Immich API key |
-| `DB_PATH` | SQLite database path inside container (default: `data/bot.db`) |
+| `DB_PATH` | SQLite database path inside container (default: `/app/data/bot.db`) |
 
 ## Data Persistence
 

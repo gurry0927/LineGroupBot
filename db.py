@@ -1,11 +1,13 @@
 import os
 import aiosqlite
 
-DB_PATH = os.getenv("DB_PATH", "data/bot.db")
+# Absolute by default so the SQLite file location never depends on the process
+# CWD / WORKDIR (it must land on the mounted volume, not the ephemeral layer).
+DB_PATH = os.getenv("DB_PATH", "/app/data/bot.db")
 
 
 async def init_db():
-    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    os.makedirs(os.path.dirname(DB_PATH) or ".", exist_ok=True)
     async with aiosqlite.connect(DB_PATH) as db:
         await db.execute("""
             CREATE TABLE IF NOT EXISTS group_albums (
