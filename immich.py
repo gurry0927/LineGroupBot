@@ -45,9 +45,8 @@ async def upload_asset(image_bytes: bytes, filename: str) -> str:
             f"{IMMICH_URL}/api/assets",
             headers=_HEADERS,
             files={"assetData": (filename, image_bytes, "image/jpeg")},
+            # Immich v3 removed deviceAssetId / deviceId from the upload API.
             data={
-                "deviceAssetId": filename,
-                "deviceId": "linebot",
                 "fileCreatedAt": now,
                 "fileModifiedAt": now,
             },
